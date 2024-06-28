@@ -5,21 +5,50 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from PageObjects.HomePage import HomePage
 
+
+
+# #wait for content to load
+# WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "home-content")))
+
+# #element I want to interact with which is the forms button
+# search_for_element = driver.find_element(By.CLASS_NAME, "card-up")
+
+# # Scroll the element into view
+# driver.execute_script("arguments[0].scrollIntoView(true);", search_for_element)
+
+# #action for the forms button
+# search_for_element.click()
+# print("test passed")
+
+
+#Go to browser
 driver = webdriver.Chrome()
 driver.get("https://demoqa.com/")
 
-#wait for content to load
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "home-content")))
 
-#element I want to interact with which is the forms button
-search_for_element = driver.find_element(By.CLASS_NAME, "card-up")
+def test_home_page():
+    home_page = HomePage(driver)
 
-# Scroll the element into view
-driver.execute_script("arguments[0].scrollIntoView(true);", search_for_element)
+    #action
+    home_page.waitForPageToLoadAndScrollToElement("card-up")
+    homePageElement = home_page.find_the_element_in_home("card-up")
+    home_page.click_element_button("card-up")
 
-#action for the forms button
-search_for_element.click()
+    #assertion print
+    print("Home Page test passed")
+
+
+def test_find_element_tab():
+    pass
+
+
+
+
+
+
+
 
 search_for_element_text = driver.find_element(By.ID, "item-0")
 # driver.execute_script("arguments[0].scrollIntoView(true);", search_for_element_text)
@@ -36,7 +65,7 @@ search_for_firstName.send_keys("admin")
 search_for_email = driver.find_element(By.ID, "userEmail")
 
 #type email
-search_for_email.send_keys("admin@gmail")
+search_for_email.send_keys("admin@gmail.com")
 
 
 #search for address input text box
