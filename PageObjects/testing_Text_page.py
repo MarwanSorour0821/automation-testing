@@ -7,7 +7,7 @@ from PageObjects.CommonFuntions import CommonFuntions
 
 
 
-class text_test_page(PageFactory):
+class text_test_page(CommonFuntions):
 
     def __init__(self,driver):
         self.driver = driver
@@ -34,6 +34,7 @@ class text_test_page(PageFactory):
     
     def findSubmitButton(self):
         button_location = self.GoToElementByID("submit")
+        return button_location
 
     def clickSubmitButton(self):
         self.submit_button.click()
