@@ -17,7 +17,13 @@ class CommonFuntions(PageFactory):
         # Scroll to the element if needed
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-
+    def GoToElementByID(self, element_to_find):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, element_to_find))
+        )
+        
+        #scroll to element
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
 
     

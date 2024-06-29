@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from PageObjects.CommonFuntions import CommonFuntions
 
 
+
 class text_test_page(PageFactory):
 
     def __init__(self,driver):
@@ -31,6 +32,10 @@ class text_test_page(PageFactory):
     def typePermanentAddress(self):
         self.permanent_address.send_keys("Westchester")
     
+
+    def findSubmitButton(self):
+        button_location = self.waitForPageToLoadAndScrollToElement("")
+
     def clickSubmitButton(self):
         self.submit_button.click()
     
