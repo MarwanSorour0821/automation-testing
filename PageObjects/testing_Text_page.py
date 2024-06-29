@@ -11,7 +11,6 @@ class text_test_page(PageFactory):
     def __init__(self,driver):
         self.driver = driver
     
-
     locators = {
         "name_field" : ("ID", "userName"),
         "email_field": ("ID", "userEmail"),

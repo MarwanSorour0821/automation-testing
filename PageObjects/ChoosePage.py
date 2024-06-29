@@ -11,12 +11,10 @@ class chooseTheTab(PageFactory):
     def __init__(self,driver):
         self.driver = driver
     
-
     locators = {
         "text_button" : ("ID", "item-0")
     }
     
-
     def chooseElementTab(self):
         self.text_button.click()
 

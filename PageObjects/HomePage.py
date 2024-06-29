@@ -10,26 +10,17 @@ class HomePage(CommonFuntions):
         super().__init__(driver)
     
     
-    
-    
-
-
     locators = {
         "element_button" : ("CLASS_NAME", "card-up")
     }
 
-    #wait for the lement 
-    # CommonFuntions.waitForPageToLoadAndScrollToElement("CLASS_NAME","card-up")
-    
     def find_the_element_in_home(self, element_class_name):
-        # self.element.find_element(By.CLASS_NAME, 'card-up')
         element = self.waitForPageToLoadAndScrollToElement(element_class_name)
         return element
         
     def click_element_button(self):
         self.element_button.click()
-        # element = (element_class_name)
-        # element_class_name.click()
+        
         
 
 
