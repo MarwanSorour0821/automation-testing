@@ -32,9 +32,8 @@ class text_test_page(PageFactory):
     def typePermanentAddress(self):
         self.permanent_address.send_keys("Westchester")
     
-
     def findSubmitButton(self):
-        button_location = self.waitForPageToLoadAndScrollToElement("")
+        button_location = self.GoToElementByID("submit")
 
     def clickSubmitButton(self):
         self.submit_button.click()
