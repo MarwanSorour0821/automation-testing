@@ -3,13 +3,15 @@ from seleniumpagefactory.Pagefactory import PageFactory
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from PageObjects.CommonFuntions import waitForPageToLoadAndScrollToElement
+from PageObjects.CommonFuntions import CommonFuntions
 
-class HomePage(PageFactory):
+class HomePage(CommonFuntions):
     def __init__(self,driver):
-        self.driver = driver
+        super().__init__(driver)
     
-
+    
+    
+    
 
 
     locators = {
@@ -17,12 +19,17 @@ class HomePage(PageFactory):
     }
 
     #wait for the lement 
-    waitForPageToLoadAndScrollToElement("CLASS_NAME","card-up")
-
-    def find_the_element_in_home(self,methodOfFinding, element):
-        self.element.find_element(By.methodOfFinding, element)
+    # CommonFuntions.waitForPageToLoadAndScrollToElement("CLASS_NAME","card-up")
+    
+    def find_the_element_in_home(self, element_class_name):
+        # self.element.find_element(By.CLASS_NAME, 'card-up')
+        element = self.waitForPageToLoadAndScrollToElement(element_class_name)
+        return element
         
-    def click_element_button(self, element):
-        self.element.click()
+    def click_element_button(self):
+        self.element_button.click()
+        # element = (element_class_name)
+        # element_class_name.click()
+        
 
 
