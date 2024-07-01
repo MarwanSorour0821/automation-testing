@@ -16,7 +16,7 @@ from PageObjects.testing_Text_page import text_test_page
 driver = webdriver.Chrome()
 driver.get("https://demoqa.com/")
 
-
+#Pages to test
 def test_home_page():
     home_page = HomePage(driver)
     common = CommonFuntions(driver)
