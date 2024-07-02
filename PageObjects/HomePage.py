@@ -5,13 +5,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from PageObjects.CommonFuntions import CommonFuntions
 
-class HomePage(CommonFuntions):
+class homePage(CommonFuntions):
     def __init__(self,driver):
         super().__init__(driver)
     
     
     locators = {
-        "element_button" : ("CLASS_NAME", "card-up")
+        "element_button" : (By.CLASS_NAME, "card-up")
     }
 
     def find_the_element_in_home(self, element_class_name):
@@ -19,7 +19,9 @@ class HomePage(CommonFuntions):
         return element
         
     def click_element_button(self):
-        self.element_button.click()
+        element_button = self.driver.find_element(*self.locators["element_button"])
+        self.driver.execute_script("arguments[0].scrollIntoView();", element_button)
+        element_button.click()
         
         
 
