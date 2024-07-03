@@ -30,7 +30,6 @@ class text_test_page(CommonFuntions):
     #ACTION FUNCTIONS
     def typeUserNameInTextField(self, user_name):
         user_name_field = self.driver.find_element(*self.locators["name_field"])
-        
         #empty text field before inputting new text
         user_name_field.clear()
         user_name_field.send_keys(user_name)

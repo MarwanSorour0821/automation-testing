@@ -3,6 +3,7 @@ from PageObjects.HomePage import homePage
 from PageObjects.CommonFuntions import CommonFuntions
 from PageObjects.ChoosePage import chooseTheTab
 from PageObjects.testing_Text_page import text_test_page
+from PageObjects.reader import readCSVFile
 from selenium.webdriver.common.by import By
 
 
@@ -21,25 +22,23 @@ def test_choose_element_page(driver):
 
 
 def test_typingInputs(driver):
-    #INPUTS 
-    name = "John Doe"
-    email = "john@gmail.com"
-    current_address = "New york"
-    permanent_address = "Cairo"
+
+    #READ CSV FILE
+    test_name_data = readCSVFile('data/inputTextInformation.csv')
     
     #initialise
     textPage = text_test_page(driver)
     
-    #typing the inputs 
-    textPage.typeUserNameInTextField(name)
-    textPage.typeEmailInTextField(email)
-    textPage.typeCurrentAddress(current_address)
-    textPage.typePermanentAddress(permanent_address)
-    textPage.clickSubmitButton()
+    for row in test_name_data:
+        #TYPING INPUTS
+        textPage.typeUserNameInTextField(row['input_name'])
+        textPage.typeEmailInTextField(row['input_email'])
+        textPage.typeCurrentAddress(row['inputCurrentAddress'])
+        textPage.typePermanentAddress(row['inputPermanentAddress'])
+        textPage.clickSubmitButton()
 
-    #verify the inputs against the outputs
-    textPage.verifySubmittedName(name)
-    textPage.verifySubmittedEmail(email)
-    textPage.verifyCurrentAddress(current_address)
-    textPage.verifyPermanentAddress(permanent_address)
-
+        #TESTING INPUTS AGAINST OUTPUTS
+        textPage.verifySubmittedName(row['expected_name_output'])
+        textPage.verifySubmittedEmail(row['expected_email_output'])
+        textPage.verifyCurrentAddress(row['expectedCurrentAddress'])
+        textPage.verifyPermanentAddress(row['inputPermanentAddress'])
